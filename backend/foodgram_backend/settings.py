@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+import string
 
 from django.core.management.utils import get_random_secret_key
 from dotenv import load_dotenv
@@ -17,9 +18,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SEKRET_KEY', default=get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG') == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(', ')
+
+AUTH_USER_MODEL = 'users.User'
+
+CHARACTERS = string.ascii_letters + string.digits
 
 
 # Application definition
