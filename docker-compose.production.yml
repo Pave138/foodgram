@@ -29,7 +29,6 @@ services:
     platform: linux/arm64
     volumes:
       - static:/app/build/
-    restart: always
   gateway:
     container_name: foodgram-proxy
     image: pave138/foodgram_gateway
