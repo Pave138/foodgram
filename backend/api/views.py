@@ -162,7 +162,7 @@ class RecipeViewSet(ModelViewSet):
                 filter=models.Q(shoppingcarts__user_id=user_id)
             ),
             is_in_shopping_cart=models.Case(
-                models.When(recipe_in_shopping_cart=1, then=True),
+                models.When(recipe_in_shopping_cart__gte=1, then=True),
                 default=False,
                 output_field=models.BooleanField()
             )
