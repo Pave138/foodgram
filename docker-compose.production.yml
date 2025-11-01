@@ -12,7 +12,7 @@ services:
     volumes:
       - pg_data:/var/lib/pgsql/data
     restart: always
-  foodgram_backend:
+  backend:
     container_name: foodgram-backend
     image: pave138/foodgram_backend
     platform: linux/arm64
@@ -40,5 +40,5 @@ services:
       - static:/foodgram_static/
       - media:/foodgram_media/
     depends_on:
-      - foodgram_backend
+      - backend
     restart: always
