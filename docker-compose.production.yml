@@ -7,6 +7,7 @@ services:
   db:
     container_name: foodgram-db
     image: postgres:17-alpine
+    platform: linux/arm64
     env_file: .env
     volumes:
       - pg_data:/var/lib/pgsql/data
@@ -14,6 +15,7 @@ services:
   foodgram_backend:
     container_name: foodgram-backend
     image: pave138/foodgram_backend
+    platform: linux/arm64
     env_file: .env
     volumes:
       - static:/app/static/
@@ -24,12 +26,14 @@ services:
   frontend:
     container_name: foodgram-front
     image: pave138/foodgram_frontend
+    platform: linux/arm64
     volumes:
       - static:/app/build/
     restart: always
   gateway:
     container_name: foodgram-proxy
     image: pave138/foodgram_gateway
+    platform: linux/arm64
     ports:
       - "7777:80"
     volumes:
