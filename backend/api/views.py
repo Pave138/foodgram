@@ -25,7 +25,6 @@ from recipes.models import (
     Favorite, Ingredient, Recipe, Tag, ShoppingCart, RecipeIngredient)
 from users.models import Subscription
 
-
 User = get_user_model()
 
 
@@ -228,12 +227,12 @@ class RecipeViewSet(ModelViewSet):
         ).values('ingredient__name', 'ingredient__measurement_unit').annotate(
             amounts=Sum('amount')
         )
-        file = f'Список ингредиентов пользователя {user.username}: \n'
+        file = f'Список ингредиентов пользователя {user.username}:\n'
         for ingredient in ingredients:
             name = ingredient['ingredient__name']
             meas_unit = ingredient['ingredient__measurement_unit']
             amounts = ingredient['amounts']
-            file += f'    • {name.capitalize()} - {amounts} {meas_unit}; \n'
+            file += f'    • {name.capitalize()} - {amounts} {meas_unit};\n'
 
         file += '\nwww.foodrgram.ddns.net'
         response = HttpResponse(file, content_type='text/plain')
