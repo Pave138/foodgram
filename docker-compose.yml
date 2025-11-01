@@ -33,4 +33,4 @@ services:
       - static:/foodgram_static/
       - media:/foodgram_media/
     depends_on:
-      - backend
+      - foodgram_backend
