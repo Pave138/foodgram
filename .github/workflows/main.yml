@@ -142,8 +142,8 @@ jobs:
         passphrase: ${{ secrets.DEPLOY_SERVER_SSH_PASSPHRASE }}
         script: |
           cd foodgram
-          sudo docker compose -f docker-compose.production.yml pull
-          sudo docker compose -f docker-compose.production.yml up -d
+          docker compose -f docker-compose.production.yml pull
+          docker compose -f docker-compose.production.yml up -d
 
   send_message_via_telegram:
     name: Send message via Telegram
